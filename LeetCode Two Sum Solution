@@ -1,0 +1,51 @@
+Given an array of integers, return indices of the two numbers such that they add up to a specific target.
+
+You may assume that each input would have exactly one solution, and you may not use the same element twice.
+
+Example:
+
+Given nums = [2, 7, 11, 15], target = 9,
+
+Because nums[0] + nums[1] = 2 + 7 = 9,
+return [0, 1].	
+
+//solution in c++
+
+class Solution {
+
+public:
+
+    vector<int> twoSum(vector<int>& nums, int target) {
+
+        unordered_map<int, int>hashMap;
+
+        vector<int>result; //stores the return value
+
+        //initilize the hashMap
+
+        for(int i = 0; i<nums.size(); i++){
+            hashMap[nums[i]] = i;
+
+        }
+// main code 
+        for(int i = 0; i<nums.size(); i++){
+
+            int value = target - nums[i]; //give us the target
+
+            if(hashMap.find(value) !=hashMap.end() && hashMap[value] !=i){
+
+                result.push_back(hashMap[value]);
+
+                result.push_back(i);
+
+                break; // break because we don't need to loop through the rest as we need to check only two values
+
+            }
+
+        }
+
+         return result;    //returns the result 
+
+    }
+
+};
